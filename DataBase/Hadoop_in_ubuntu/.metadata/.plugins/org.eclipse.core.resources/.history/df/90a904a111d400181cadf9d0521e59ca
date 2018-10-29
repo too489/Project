@@ -1,0 +1,52 @@
+package Hw1;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapred.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.*;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
+import com.mongodb.hadoop.MongoConfig;
+import com.mongodb.hadoop.MongoOutputFormat; 
+import com.mongodb.hadoop.io.BSONWritable; 
+import com.mongodb.hadoop.util.MongoConfigUtil;
+import com.mongodb.hadoop.util.MongoTool; 
+
+public class MongoConnector extends MongoTool {
+
+	public MongoConnector(String args){
+	    //JobConf Result_conf = new JobConf(Run_test.class);
+		Configuration conf = new Configuration();
+	    MongoConfig mongoConfig = new MongoConfig(conf);
+	    String mongoDbPath = "mongodb://root:1883@localhost/test.test";
+	    MongoConfigUtil.setOutputURI(mongoConfig, mongoDbPath);
+	    //mongoConfig.set("mongo.output.uri", mongoDbPath);
+	    //mongoConfig.setJobName("timespent"); 
+	    mongoConfig.setMapper(Hw1.Result_Mapper.class);
+	    mongoConfig.setReducer(Result_Reducer.class);
+	    mongoConfig.setOutputKeyClass(Text.class);
+	    mongoConfig.setOutputValueClass(LongWritable.class);
+	    mongoConfig.setInputFormat(TextInputFormat.class);
+	    mongoConfig.setOutputFormat(com.mongodb.hadoop.mapred.MongoOutputFormat.class);
+	    org.apache.hadoop.mapred.FileInputFormat.setInputPaths(Result_conf, new Path(args));
+	    //JobClient.runJob(Result_conf);
+	    mongoConfig.
+	    }
+	}

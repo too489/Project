@@ -1,0 +1,48 @@
+package Hw1;
+import java.io.IOException;
+import java.util.*;
+import java.util.Map.Entry;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapred.MapReduceBase;
+import org.apache.hadoop.mapred.OutputCollector;
+import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+
+public class Result_Reducer extends MapReduceBase implements Reducer<Text,Text, Text, Text>{
+		private Text result = new Text();
+		public Map<String ,String> map = new HashMap<String, String>();
+		public void reduce(Text key,Iterable<Text> values,OutputCollector<Text,LongWritable> output,Reporter reporter)throws IOException, InterruptedException{
+			
+			map.put(key.toString(),values.toString());
+			System.out.println(key.toString()+values.toString());
+			System.out.println("한줄");
+//			sortMap(map);
+			
+		}	
+//		
+//		public void sortMap (Map<String,String> unsortMap ) throws IOException, InterruptedException{
+//			Map<String, Integer> hashmap = new HashMap<String,String>();
+//			List<String> list = new LinkedList<String>(unsortMap);
+//			Collections.sort(list, new Comparator<Map.Entry<String,Integer>>(){
+//				public int compare (Map.Entry<String,Integer> o1, Map.Entry<String,Integer> o2) {
+//					return o2.getValue().compareTo(o1.getValue());
+//				}
+//			});
+//			for(Map.Entry<String,Integer> entry : list) {
+//				Run_test.Most_Loc[count]=entry.getKey();
+//				context.write(new Text(entry.getKey()), new LongWritable(entry.getValue()));
+//				hashmap.put(entry.getKey(),entry.getValue());count++;
+//			}
+			
+		}
+

@@ -1,0 +1,35 @@
+su hduser
+
+export HADOOP_CLASSPATH=$(hadoop classpath)
+
+echo $HADOOP_CLASSPATH
+
+
+
+hadoop fs -rm -r /Hw1/Output/* /Hw1/Output2/* /Hw1/Output3/*
+
+
+hadoop fs -rmdir /Hw1/Output/ /Hw1/Output2/ /Hw1/Output3/
+
+
+sudo javac -classpath ${HADOOP_CLASSPATH} -d '/home/s/hadoop-ex/Hadoop_hw1/src/hw_classes' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Run_test.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Most_Call_People_Mapper.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Most_Call_People_Reducer.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Result_Mapper.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Result_Reducer.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Most_Call_Location_Reducer.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Most_Call_Location_Mapper.java' '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/MongoDB_conf.java' 
+
+
+
+jar -cvf Hw1.jar -C '/home/s/hadoop-ex/Hadoop_hw1/src/hw_classes/' .
+
+
+hadoop jar '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Hw1.jar' Hw1.Run_test /Hw1/Input /Hw1/Output /Hw1/Output2 /Hw1/Output3
+
+
+
+db.createUser( { user: "root", pwd: "1883", roles: [ "userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})
+
+use Hw1
+
+db.createCollection("save")
+
+db.save.drop()
+
+
+

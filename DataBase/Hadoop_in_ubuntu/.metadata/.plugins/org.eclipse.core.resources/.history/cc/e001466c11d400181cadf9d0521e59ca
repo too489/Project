@@ -1,0 +1,50 @@
+package Hw1;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapred.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.*;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
+
+import com.mongodb.hadoop.MongoOutputFormat; 
+import com.mongodb.hadoop.io.BSONWritable; 
+import com.mongodb.hadoop.util.MongoConfigUtil;
+import com.mongodb.hadoop.util.MongoTool; 
+
+public class MongoConnector extends MongoTool {
+
+	public MongoConnector(String args){
+	    JobConf Result_conf = new JobConf(Run_test.class);
+	    String mongoDbPath = "mongodb://root:1883@localhost/test.test";
+	    MongoConfigUtil.setOutputURI(Result_conf, mongoDbPath);
+	    Result_conf.set("mongo.output.uri", mongoDbPath);
+	    Result_conf.setJobName("timespent"); 
+	    Result_conf.setMapperClass(Hw1.Result_Mapper.class);
+	    Result_conf.setReducerClass(Result_Reducer.class);
+	    Result_conf.setOutputKeyClass(Text.class);
+	    Result_conf.setOutputValueClass(LongWritable.class);
+	    Result_conf.setInputFormat(TextInputFormat.class);
+	    Result_conf.setOutputFormat(com.mongodb.hadoop.mapred.MongoOutputFormat.class);
+	    org.apache.hadoop.mapred.FileInputFormat.setInputPaths(Result_conf, new Path(args));
+	    //JobClient.runJob(Result_conf);
+	    
+	    }
+	}

@@ -1,0 +1,10 @@
+
+public class test {
+	public static void main(String[] args) {
+		String st;
+		st="131 01011112222 15:36 B";
+		String[] splits=st.split("\\ W +");
+		//for (int i=0 ; i<splits.length;i++)
+		System.out.println(splits[0]);
+	}
+}

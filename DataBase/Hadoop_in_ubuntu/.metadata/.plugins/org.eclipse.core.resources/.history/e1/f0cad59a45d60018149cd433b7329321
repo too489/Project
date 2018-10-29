@@ -1,0 +1,47 @@
+package Hw1;
+
+
+import java.io.IOException;
+import java.util.*;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapred.MapReduceBase;
+import org.apache.hadoop.mapred.Mapper;
+import org.apache.hadoop.mapred.OutputCollector;
+import org.apache.hadoop.mapred.Reducer;
+import org.apache.hadoop.mapred.Reporter;
+
+
+
+public class Result_Reducer <K extends WritableComparable, V extends Writable> 
+extends MapReduceBase implements Reducer<Text, LongWritable, Text, Text> {
+		private Text result_key = new Text();
+		private Text result_value = new Text();
+		public Map<String ,List> map = new HashMap<String, List>();
+		
+		@Override
+		public void reduce(Text key, Iterator<LongWritable> values, OutputCollector<Text, Text> output, Reporter reporter)
+				throws IOException {
+			
+			ArrayList list=new ArrayList();
+			while(values.hasNext()) {
+				list.add(Integer.parseInt(values.next().toString()));
+			}
+			Collections.sort(list,new Comparator<Integer>() {
+				public int compare(Integer o1, Integer o2) {
+					return o1.compareTo(o2);
+				}
+			});
+			Run_test.array_key.add(key.toString());
+			Run_test.array_value.add(list.toString());
+			Text Value=new Text(list.toString());
+			output.collect(key,Value);
+			MongoDB_conf db = new MongoDB_conf(key,Value);
+		}
+}
+
+

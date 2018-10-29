@@ -1,0 +1,92 @@
+package Hw1;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapred.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.*;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+import org.bson.Document;
+
+import com.mongodb.hadoop.MongoConfig;
+import com.mongodb.hadoop.MongoOutputFormat; 
+import com.mongodb.hadoop.io.BSONWritable; 
+import com.mongodb.hadoop.util.MongoConfigUtil;
+import com.mongodb.hadoop.util.MongoTool; 
+
+public class Run_test extends MongoTool  {
+	public static final String[] Most_Peo = new String[5];
+	public static final String[] Most_Loc = new String[5];
+	public static final ArrayList array_key = new ArrayList();
+	public static final ArrayList array_value = new ArrayList();
+	
+ 
+  public static void main(String[] args)throws Exception{
+
+	  Configuration conf = new Configuration();
+	    Job job = Job.getInstance(conf, "Run_test");
+	    job.setJarByClass(Run_test.class);
+	    job.setMapperClass(Most_Call_People_Mapper.class);
+	    job.setReducerClass(Most_Call_People_Reducer.class);
+	    job.setOutputKeyClass(Text.class);
+	    job.setOutputValueClass(LongWritable.class);
+	    FileInputFormat.addInputPath(job, new Path("/Hw1/Input"));//args[0]));//여기서 입력값 조절hadoop jar '/home/s/hadoop-ex/Hadoop_hw1/src/Hw1/Hw1.jar' Hw1.Run_test /Hw1/Input /Hw1/Output
+	    FileOutputFormat.setOutputPath(job, new Path("/Hw1/Output"));//args[1]));
+	    job.waitForCompletion(true);
+	    System.out.println("1작업 종");
+//	    for (String var:Most_Peo) {
+//	    	System.out.println(var);
+//	    	System.out.println("출력되는지보");
+//	    }
+	//    
+	    Job job2 = Job.getInstance(conf, "Run_test");
+	    job2.setJarByClass(Run_test.class);
+	    job2.setMapperClass(Most_Call_Location_Mapper.class);
+	    job2.setReducerClass(Most_Call_Location_Reducer.class);
+	    job2.setOutputKeyClass(Text.class);
+	    job2.setOutputValueClass(LongWritable.class);
+	    FileInputFormat.addInputPath(job2,new Path("/Hw1/Input"));//args[0]));
+	    FileOutputFormat.setOutputPath(job2, new Path("/Hw1/Output2"));//args[2]));
+	    job2.waitForCompletion(true);
+   
+	    JobConf Result_conf = new JobConf(conf,Run_test.class);
+	    String mongoDbPath = "mongodb://root:1883@localhost/Hw1.save";
+		MongoConfigUtil.setOutputURI(Result_conf, mongoDbPath);
+		Result_conf.set("mongo.input.uri", mongoDbPath);
+		Result_conf.set("mongo.output.uri", mongoDbPath);
+		Result_conf.setJobName("timespent"); 
+		Result_conf.setMapperClass(Hw1.Result_Mapper.class);
+		Result_conf.setReducerClass(Result_Reducer.class);
+		Result_conf.setOutputKeyClass(Text.class);
+		Result_conf.setOutputValueClass(Document.class);
+		Result_conf.setInputFormat(TextInputFormat.class);
+		Result_conf.setOutputFormat(com.mongodb.hadoop.mapred.MongoOutputFormat.class);
+		org.apache.hadoop.mapred.FileInputFormat.setInputPaths(Result_conf, new Path(args[0]));
+		org.apache.hadoop.mapred.FileOutputFormat.setOutputPath(Result_conf,new Path(args[3]));
+		JobClient.runJob(Result_conf);
+	//
+	    //ToolRunner.run(new Run_test(),args);
+	    ListIterator itr_key = array_key.listIterator();
+	    ListIterator itr_value = array_value.listIterator();
+	    while(itr_key.hasNext())
+	    	System.out.println(itr_key.next().toString() + "("+itr_value.next().toString()+")" );
+	
+	    }
+  }
+

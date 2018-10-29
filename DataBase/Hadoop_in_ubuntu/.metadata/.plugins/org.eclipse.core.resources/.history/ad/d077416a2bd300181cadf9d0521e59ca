@@ -1,0 +1,40 @@
+	
+	package Hw1;
+	import java.io.IOException;
+	import java.util.*;
+
+
+//import java.text.SimpleDateFormat;
+//import java.util.Locale;
+//import java.util.Date;
+//import java.text.ParseException;
+//
+public class test {
+public static void main(String[] args) {
+//		String st;
+//		st="131 01011112222 15:36 B";
+//		String[] splits=st.split(" ");
+//		System.out.println(splits[2]);
+//		String[] Time = splits[2].split(":");
+//		System.out.println(Time[0]);
+//		if(Integer.parseInt(Time[0])>6) {
+//			//그냥 지나가
+//		}else
+//		{
+//			
+//		}
+//		
+//
+//	}
+
+	
+	Map<String,Integer> sortedMap = new HashMap<String, Integer>();
+	String str = "qwerqwer";
+	sortedMap.put("stere",1);
+	System.out.println(sortedMap.entrySet());
+//	for (Map.Entry<String,Integer> entry : sortedMap.entrySet()){
+//		
+//	}
+
+}
+}

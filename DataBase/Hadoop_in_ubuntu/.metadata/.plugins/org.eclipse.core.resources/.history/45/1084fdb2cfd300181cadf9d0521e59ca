@@ -1,0 +1,43 @@
+package Hw1;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapred.MapReduceBase;
+import org.apache.hadoop.mapred.OutputCollector;
+import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+
+public class Result_Mapper extends Mapper<Text, Text, Text, Text>{
+	private Text Loc = new Text();
+	private Text Peo=new Text();
+	
+	public void map(Text key, Text value ,OutputCollector<Text,Text> output,Reporter reporter) throws IOException, InterruptedException{
+		String st = value.toString();//value값을 받아와서 자바에서 쓸수있는 string 으로 변	
+		String[] splits = st.split(" ");
+		String[] Time = splits[2].split(":");//시 분으로 나누
+		System.out.println("????????????????실행안되니??");
+		if(Integer.parseInt(Time[0])>5) {
+			//시간이 6보다 크그냥 지나가
+		}else
+		{
+			Run_test.array_key.add(st);
+			Run_test.array_value.add(Peo.toString());
+				if(Run_test.Most_Loc[0].equals(splits[3])||Run_test.Most_Loc[1].equals(splits[3])||Run_test.Most_Loc[2].equals(splits[3])||Run_test.Most_Loc[3].equals(splits[3])) {
+				Loc.set(splits[3]);
+				Peo.set(splits[0]);
+
+				output.collect(Loc, Peo);
+			}
+		}
+	}
+}
