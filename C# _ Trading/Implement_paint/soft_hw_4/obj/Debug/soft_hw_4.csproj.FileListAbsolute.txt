@@ -22,6 +22,3 @@ C:\Users\too48\documents\visual studio 2015\Projects\soft_hw_4\soft_hw_4\obj\Deb
 C:\Users\too48\Desktop\학교\4-1class\응용소프트웨어실습\hw4\[HW4]2015726103_서현태\[HW4]2015726103_서현태_제출용\soft_hw_4\bin\Debug\soft_hw_4.exe.config
 C:\Users\too48\Desktop\학교\4-1class\응용소프트웨어실습\hw4\[HW4]2015726103_서현태\[HW4]2015726103_서현태_제출용\soft_hw_4\obj\Debug\soft_hw_4.exe
 C:\Users\too48\Desktop\학교\4-1class\응용소프트웨어실습\hw4\[HW4]2015726103_서현태\[HW4]2015726103_서현태_제출용\soft_hw_4\obj\Debug\soft_hw_4.pdb
-C:\Project\C# _ Trading\Implement_paint\soft_hw_4\bin\Debug\soft_hw_4.exe.config
-C:\Project\C# _ Trading\Implement_paint\soft_hw_4\obj\Debug\soft_hw_4.exe
-C:\Project\C# _ Trading\Implement_paint\soft_hw_4\obj\Debug\soft_hw_4.pdb
