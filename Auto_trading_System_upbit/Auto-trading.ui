@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>830</width>
+    <height>729</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QToolButton" name="Start_Button">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>70</y>
+      <width>291</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;Start&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 57 italic 36pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>START</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="Log_Text">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>310</y>
+      <width>451</width>
+      <height>341</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="Stop_Button">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>180</y>
+      <width>291</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;Start&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 57 italic 36pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>STOP</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="Predict_value_cal">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>350</y>
+      <width>291</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;Start&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: italic 28pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>예측값 계산하기</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Combo_Box">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>290</y>
+      <width>291</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <item>
+     <property name="text">
+      <string>BTC-비트코인</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ETH-이더리움</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>EOS-이오스</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>TRX-트론</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>NEO-네오</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>XRP-리플</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ADA-에이다</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ELF-엘프</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>BCH-비트코인캐쉬</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>XLM-스텔라루멘</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>QTUM-퀀텀</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ADT-에드토큰</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>STROM-스톰</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>DASH-대쉬</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>BTG-비트코인 골드</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>XMR-모네로</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GAS-가스</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>STRAT-스트라티스</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>550</y>
+      <width>91</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>자산현황 </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>610</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>수익현황</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Assets">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>550</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Profit">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>610</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="Coin_Collections">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>451</width>
+      <height>221</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>-20</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>거래하기 좋은 종목</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Log</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Predict_Value_Label">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>500</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>500</y>
+      <width>91</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>예측값</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Now_Value_Label">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>450</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>450</y>
+      <width>91</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>현재 값</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>20</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic bold 16pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>시간 간격</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Combo_Box_minute">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>30</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string> </string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>1  minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3 minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>5 minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>10 minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>15 minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>30 minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>60 minute</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>240 minute(4 hour)</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="Setting">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>30</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 57 bold 13pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>설 정</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Refresh">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>0</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Refresh</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>830</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
